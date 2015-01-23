@@ -1,14 +1,19 @@
 var EventEmitter = require('eventemitter2').EventEmitter2;
-var assign = require('object-assign');
 
 // This should live in its own module, providing a requireable interface that
 //  all components can reach.
 module.exports = {
 
-  // Use dispatcher.on(EVENT, PAYLOAD) in models/stores to update views/components.
-  'dispatcher': assign({}, EventEmitter.prototype),
+  // Use dispatcher.on(EVENT, PAYLOAD) to listen to events from actions in
+  //  models/collections/stores.
+  'dispatcher': new EventEmitter({
+    'wildcard': true,
+    'delimiter': '.',
+    'newListener': false,
+    'maxListeners': Infinity
+  }),
 
-  // The most "powerful" module eva'.
+  // Attach ui/server actions here so we can call them from anywhere.
   'actions': {}
 
 };
