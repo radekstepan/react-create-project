@@ -2,6 +2,9 @@ var React = require('react');
 
 var state = require('./App/State.js');
 
+// Attach all the actions for all the components to access.
+require('./App/Actions.js');
+
 // Initial state.
 state.set('articles', [
   {
