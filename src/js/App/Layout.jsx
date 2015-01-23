@@ -1,13 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
 
-// Dispatcher and Actions.
-var App = require('./App.js');
-
-var Tasks = require('../Tasks/index.js');
-
-// Fake Server emitting task adding actions.
-var Server = require('./Server.js');
+var Blog = require('../Blog/index.js');
 
 module.exports = React.createClass({
 
@@ -17,7 +11,7 @@ module.exports = React.createClass({
     // The app layout.
     return (
       <div>
-        <Tasks />
+        <Blog />
       </div>
     );
   }

@@ -7,8 +7,11 @@
   "dependencies": {
     "deep-diff": "^0.3.0",
     "eventemitter2": "^0.4.14",
-    "foreach": "^2.0.5",
     "lesshat": "^3.0.2",
+    "lodash.foreach": "^2.4.1",
+    "lodash.forown": "^2.4.1",
+    "lodash.isfunction": "^2.4.1",
+    "lodash.map": "^2.4.1",
     "object-assign": "^2.0.0",
     "object-path": "^0.8.1",
     "react": "0.13.0-alpha.1",

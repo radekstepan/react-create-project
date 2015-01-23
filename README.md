@@ -5,12 +5,6 @@
 ```bash
 $ nvm use
 $ npm install
-$ make build
+$ make watch-js
 $ npm start
-```
-
-##Development
-
-```bash
-$ make watch
 ```

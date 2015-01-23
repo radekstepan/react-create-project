@@ -1,17 +1,21 @@
 /** @jsx React.DOM */
 var React = require('react');
+var assign = require('object-assign');
+var map = require('lodash.map');
 
-var Collection = require('../models/TasksCollection.js');
+var state = require('../../App/State.js');
 
-var Tasks = React.createClass({
+var Article = require('./Article.jsx');
 
-  'displayName': 'Tasks.jsx',
+var Blog = React.createClass({
+
+  'displayName': 'Blog.jsx',
 
   // A place to serialize our collections and models and build a pojo.
   //  For every Backbone model, collection or any other object, we need to serialize
   //  the data into one neat package.
   _getData: function() {
-    return this.props.collection.get();
+    return this.props.state.get();
   },
 
   // What shall we do on Backbone model change? Update our internal state. This can be
@@ -33,7 +37,7 @@ var Tasks = React.createClass({
     //  Listen to model changes to update our internal state. So for all Backbone
     //  models, collections or any other objects, we need to register their changes
     //  to our own change handler (which sets the new state).
-    this.props.collection.onAny(this._onChange);
+    this.props.state.onAny(this._onChange);
   },
 
   // Invoked immediately before a component is unmounted from the DOM.
@@ -41,21 +45,21 @@ var Tasks = React.createClass({
     //  Remove listener. So for all Backbone models, collections or any other objects,
     //  we need to stop listening to their changes in the context of our change handler
     //  so that we no longer have zombies lingering around.
-    this.props.collection.offAny(this._onChange);
+    this.props.state.offAny(this._onChange);
   },
 
   // Pure function, it does not modify component state, it returns the same result each
   //  time it's invoked, and it does not read from or write to the DOM or otherwise
   //  interact with the browser (e.g., by using setTimeout).
   render: function() {
-    var tasks = '';
+    var articles = map(this.state.articles, function(article) {
+      return <Article {...article} />;
+    });
 
     return (
-      <div className="tasks">
-        {this.state.list.map(function(task) {
-          return <Task {...task}>;
-        })}
-      </div>
+      <ul className="blog">
+        {articles}
+      </ul>
     );
   }
 
@@ -66,8 +70,8 @@ module.exports = React.createClass({
 
   render: function() {
     var props = {};
-    assign(props, this.props, { 'collection': new Collection() });
-    return <Tasks {...props} />;
+    assign(props, this.props, { 'state': state });
+    return <Blog {...props} />;
   }
 
 });

@@ -4,7 +4,7 @@ WATCH      = ./node_modules/.bin/watch
 LESS       = ./node_modules/.bin/lessc
 BROWSERIFY = ./node_modules/.bin/browserify
 UGLIFY     = ./node_modules/.bin/uglifyjs
-NAME       = {{name}}
+NAME       = $(shell node -e "console.log(require('./package.json').name)")
 
 watch-js:
 	${MAKE} build-js
