@@ -16,11 +16,7 @@ var State = Observable.createClass({
     // When one of our params change, make a request.
     this.on('params.*', this.req);
 
-    // Register dispatcher callbacks.
-    App.dispatcher.on('PAGE_CHANGE', function(payload) {
-      this.set('params.page', payload.page);
-    }.bind(this));
-    
+    // Register dispatcher callbacks.    
     App.dispatcher.on('ARTICLES_ADD', function(obj) {
       obj.key = this.data.articles.length + 1;
       this.push('articles', obj);
