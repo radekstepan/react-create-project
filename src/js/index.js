@@ -1,5 +1,6 @@
 var React = require('react');
 
+var actions = require('./App/Actions.js');
 var state = require('./App/State.js');
 
 // Initial state.

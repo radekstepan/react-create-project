@@ -20,7 +20,6 @@ watch:
 build-js:
 	${BROWSERIFY} -e --standalone $(NAME) ./src/js/index.js | ${UGLIFY} - > public/js/bundle.js
 
-# Use less on index style.
 build-css:
 	${LESS} src/style/{{name}}.less > public/css/bundle.css
 

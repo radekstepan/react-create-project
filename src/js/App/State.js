@@ -17,16 +17,17 @@ var State = Observable.createClass({
     this.on('params.*', this.req);
 
     // Register dispatcher callbacks.
-    App.dispatcher.on(function(action, payload) {
-      switch (action) {
-        // Set/change page.
-        case 'PAGE_CHANGE':
-          this.set('params.page', payload.page);
-          break;
-      }
+    App.dispatcher.on('PAGE_CHANGE', function(payload) {
+      this.set('params.page', payload.page);
+    }.bind(this));
+    
+    App.dispatcher.on('ARTICLES_ADD', function(obj) {
+      obj.key = this.data.articles.length + 1;
+      this.push('articles', obj);
     }.bind(this));
   },
 
+  // Example of running an XHR that can be cancelled.
   req: function() {
     // Cancel previous request?
     var req;
