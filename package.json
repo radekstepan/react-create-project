@@ -1,30 +1,27 @@
 {
   "name": "{{name}}",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
-    "start": "./node_modules/.bin/superstatic public --port 8080"
+    "start": "./node_modules/.bin/superstatic public --port 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "deep-diff": "^0.3.0",
-    "eventemitter2": "^0.4.14",
+    "deep-diff": "^0.3.2",
     "lesshat": "^3.0.2",
-    "lodash.foreach": "^2.4.1",
-    "lodash.forown": "^2.4.1",
-    "lodash.isfunction": "^2.4.1",
-    "lodash.map": "^2.4.1",
-    "object-assign": "^2.0.0",
-    "object-path": "^0.8.1",
-    "react": "0.13.0-alpha.1",
-    "superstatic": "^2.0.0-rc4"
+    "lodash": "^3.10.1",
+    "object-path": "^0.9.2",
+    "react": "^0.13.3"
   },
   "devDependencies": {
-    "browserify": "^8.0.3",
-    "less": "^2.2.0",
-    "reactify": "^0.17.1",
-    "uglify-js": "^2.4.16",
-    "watch": "^0.13.0",
-    "watch-less": "0.0.3",
-    "watchify": "^2.2.1"
+    "babel": "^5.8.23",
+    "babelify": "^6.3.0",
+    "browserify": "^11.1.0",
+    "less": "^2.5.1",
+    "superstatic": "^1.2.3",
+    "uglify-js": "^2.4.24",
+    "watch": "^0.16.0",
+    "watch-less": "0.0.4",
+    "watchify": "^3.4.0"
   },
   "browserify": {
     "transform": [
@@ -34,5 +31,7 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/radekstepan/{{name}}.git"
-  }
+  },
+  "private": true,
+  "license": "LicenseRef-LICENSE"
 }

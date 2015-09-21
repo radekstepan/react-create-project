@@ -1,4 +1,3 @@
-LESSW      = ./node_modules/.bin/watch-less
 WATCHIFY   = ./node_modules/.bin/watchify
 WATCH      = ./node_modules/.bin/watch
 LESS       = ./node_modules/.bin/lessc
@@ -8,20 +7,20 @@ NAME       = $(shell node -e "console.log(require('./package.json').name)")
 
 watch-js:
 	${MAKE} build-js
-	${WATCHIFY} -e  --standalone $(NAME) ./src/js/index.js -o public/js/bundle.js -d -v
+	${WATCHIFY} -e -s $(NAME) ./src/js/index.jsx -t babelify -o public/js/bundle.js -d -v
 
 watch-css:
 	${MAKE} build-css
-	${WATCH} "${MAKE} build-css" src/style
+	${WATCH} "${MAKE} build-css" src/less
 
 watch:
 	${MAKE} watch-js & ${MAKE} watch-css
 
 build-js:
-	${BROWSERIFY} -e --standalone $(NAME) ./src/js/index.js | ${UGLIFY} - > public/js/bundle.js
+	${BROWSERIFY} -e -s $(NAME) ./src/js/index.jsx -t babelify | ${UGLIFY} - > public/js/bundle.js
 
 build-css:
-	${LESS} src/style/{{name}}.less > public/css/bundle.css
+	${LESS} src/less/{{name}}.less > public/css/bundle.css
 
 build:
 	${MAKE} build-js
