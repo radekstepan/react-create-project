@@ -1,37 +1,30 @@
 import React from 'react';
+import { RouterMixin } from 'react-mini-router';
 
-import store from './stores/AppStore.js';
-
-import Articles from './components/Articles.jsx';
+import BlogPage from './pages/BlogPage.jsx';
+import ArticlePage from './pages/ArticlePage.jsx';
 
 export default React.createClass({
 
   displayName: 'App.jsx',
 
-  _getData() {
-    return store.get();
+  'mixins': [ RouterMixin ],
+
+  'routes': {
+    '/':    'blog',
+    '/:id': 'article'
   },
 
-  _onChange() {
-    this.setState(this._getData());
+  blog() {
+    return <BlogPage />;
   },
 
-  getInitialState() {
-    return this._getData();
-  },
-
-  componentDidMount() {
-    store.onAny(this._onChange);
-  },
-
-  componentWillUnmount() {
-    store.offAny(this._onChange);
+  article(id) {
+    return <ArticlePage id={id} />;
   },
 
   render() {
-    return (
-      <Articles store={this.state} />
-    );
+    return this.renderCurrentRoute();
   }
 
 });
