@@ -4,10 +4,11 @@ import _ from 'lodash';
 
 import BlogPage from './pages/BlogPage.jsx';
 import ArticlePage from './pages/ArticlePage.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx';
 
 let routes = {
   '/':    'blog',
-  '/:id': 'article'
+  '/article/:id': 'article'
 };
 
 export default React.createClass({
@@ -62,6 +63,10 @@ export default React.createClass({
 
   article(id) {
     return <ArticlePage id={id} />;
+  },
+
+  notFound(path) {
+    return <NotFoundPage path={path} />;
   },
 
   render() {
