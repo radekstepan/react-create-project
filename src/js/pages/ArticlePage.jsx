@@ -33,7 +33,7 @@ export default React.createClass({
       <div>
         <div>{article.title}</div>
         <div>Lorem ipsum &hellip;</div>
-        <Link route="/">Back</Link>
+        <Link route={{ to: 'blog' }}>Back</Link>
         {comments}
         <Comment id={article.id} />
       </div>

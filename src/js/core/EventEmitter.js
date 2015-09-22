@@ -19,7 +19,7 @@ export default class EventEmitter {
 
   // Add a listener on this path/regex.
   on(path, cb) {
-    if (!_.isRegExp(path)) path = new RegExp('^' + path + '$');
+    if (!_.isRegExp(path)) path = new RegExp(`^${path}$`);
     this.list.push({ pattern: path, cb: cb });
   }
 

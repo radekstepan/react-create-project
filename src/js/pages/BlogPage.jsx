@@ -17,7 +17,7 @@ export default React.createClass({
     let articles = store.articles.map(a => {
       return (
         <div key={a.id}>
-          <Link route={'/' + a.id}>
+          <Link route={{ to: 'article', params: { id: a.id } }}>
             {a.title}
           </Link>
         </div>
