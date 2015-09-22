@@ -3,6 +3,7 @@ WATCH      = ./node_modules/.bin/watch
 LESS       = ./node_modules/.bin/lessc
 BROWSERIFY = ./node_modules/.bin/browserify
 UGLIFY     = ./node_modules/.bin/uglifyjs
+MOCHA      = ./node_modules/.bin/mocha
 NAME       = $(shell node -e "console.log(require('./package.json').name)")
 
 watch-js:
@@ -25,3 +26,8 @@ build-css:
 build:
 	${MAKE} build-js
 	${MAKE} build-css
+
+test:
+	${MOCHA} --compilers js:babel/register --ui exports --timeout 5000 --bail --reporter spec
+
+.PHONY: test

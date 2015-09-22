@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "start": "./node_modules/.bin/superstatic public --port 8080",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test"
   },
   "dependencies": {
     "deep-diff": "^0.3.2",
@@ -17,17 +17,14 @@
     "babel": "^5.8.23",
     "babelify": "^6.3.0",
     "browserify": "^11.1.0",
+    "chai": "^3.3.0",
     "less": "^2.5.1",
+    "mocha": "^2.3.3",
     "superstatic": "^1.2.3",
     "uglify-js": "^2.4.24",
     "watch": "^0.16.0",
     "watch-less": "0.0.4",
     "watchify": "^3.4.0"
-  },
-  "browserify": {
-    "transform": [
-      "reactify"
-    ]
   },
   "repository": {
     "type": "git",

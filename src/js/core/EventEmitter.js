@@ -8,6 +8,8 @@ export default class EventEmitter {
 
   // Trigger an event with obj and context.
   emit(event, obj, ctx) {
+    if (!event.length) return;
+
     this.list.forEach(sub => {
       if (sub.pattern.test(event)) {
         sub.cb.call(ctx, obj, event);
@@ -17,13 +19,13 @@ export default class EventEmitter {
 
   // Add a listener on this path/regex.
   on(path, cb) {
-    if (!_.isRegExp(path)) path = new RegExp(path);
+    if (!_.isRegExp(path)) path = new RegExp('^' + path + '$');
     this.list.push({ pattern: path, cb: cb });
   }
 
   // Add a listener to all events.
   onAny(cb) {
-    this.list.push({ pattern: /.*/, cb: cb });
+    this.list.push({ pattern: /./, cb: cb });
   }
 
   // Assume we can have multiple.
