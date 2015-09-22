@@ -8,8 +8,8 @@ export default React.createClass({
   displayName: 'Link.jsx',
 
   _route(link, evt) {
+    App.navigate(link);
     evt.preventDefault();
-    navigate(link);
   },
 
   render() {
@@ -17,7 +17,7 @@ export default React.createClass({
     let link = App.link(route.to, route.params, route.query);
 
     return (
-      <a href={link} onClick={this._route.bind(this, link)}>
+      <a href={'#!' + link} onClick={this._route.bind(this, link)}>
         {this.props.children}
       </a>
     );

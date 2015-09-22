@@ -1,15 +1,20 @@
 import React from 'react';
-import { RouterMixin } from 'react-mini-router';
+import { RouterMixin, navigate } from 'react-mini-router';
 import _ from 'lodash';
 
 import BlogPage from './pages/BlogPage.jsx';
 import ArticlePage from './pages/ArticlePage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 
+// Will fire even if event is prevented from propagating.
+delete RouterMixin.handleClick;
+
 let routes = {
-  '/':    'blog',
+  '/': 'blog',
   '/article/:id': 'article'
 };
+
+let blank = false;
 
 export default React.createClass({
 
@@ -54,7 +59,10 @@ export default React.createClass({
       }
 
       return $url;
-    }
+    },
+
+    // Route to a link.
+    navigate: navigate
   },
 
   blog() {
@@ -70,7 +78,14 @@ export default React.createClass({
   },
 
   render() {
-    return this.renderCurrentRoute();
+    if (blank) {
+      process.nextTick(() => this.setState({ tick: true }));
+      blank = false;
+      return <div />;
+    } else {
+      blank = true;
+      return this.renderCurrentRoute();
+    }
   }
 
 });
