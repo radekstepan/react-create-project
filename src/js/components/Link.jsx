@@ -5,7 +5,6 @@ export default React.createClass({
 
   displayName: 'Link.jsx',
 
-  // Use onclick handler.
   _route(route, evt) {
     evt.preventDefault();
     navigate(route);

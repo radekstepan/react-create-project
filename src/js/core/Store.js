@@ -1,32 +1,18 @@
 import opa from 'object-path';
+import _ from 'lodash';
 import { diff } from 'deep-diff';
 
-export default class Store {
+import EventEmitter from './EventEmitter.js';
+
+export default class Store extends EventEmitter {
 
   constructor(data) {
+    super();
+    // Initial payload.
     this.data = data || {};
   }
 
-  emit(path) {
-    console.log('->', path);
-  }
-
-  on(path, cb) {
-
-  }
-
-  onAny(cb) {
-
-  }
-
-  off(path, cb) {
-
-  }
-
-  offAny(cb) {
-
-  }
-
+  // Set a value on a key. Pass truthy value as 3rd param to not emit events.
   set() {
     var changes = [];
     
@@ -46,9 +32,10 @@ export default class Store {
     if (arguments.length == 3 && arguments[2]) return;
 
     // Emit all changes.
-    changes.forEach(this.emit);
+    changes.forEach(ch => this.emit(_.isArray(ch) ? ch.join('.') : ch, this.get(ch)));
   }
 
+  // Get this key path or everything.
   get(path) {
     return path ? opa.get(this.data, path) : this.data;
   }

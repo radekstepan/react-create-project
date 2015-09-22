@@ -13,6 +13,7 @@ export default React.createClass({
   render() {
     let store = this.state;
 
+    // Map through the articles.
     let articles = store.articles.map(a => {
       return (
         <div key={a.id}>
