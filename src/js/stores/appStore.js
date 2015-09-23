@@ -52,7 +52,7 @@ class AppStore extends Store {
     if ('comments' in article) {
       this.set(key.concat([ article.comments.length ]), obj.value);
     } else {
-      this.set(key.concat([ 0 ]), obj.value);
+      this.set(key, [ obj.value ]);
     }
   }
 
