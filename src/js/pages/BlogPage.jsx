@@ -8,7 +8,7 @@ export default React.createClass({
 
   displayName: 'BlogPage.jsx',
 
-  'mixins': [ Page ],
+  mixins: [ Page ],
 
   render() {
     let store = this.state;

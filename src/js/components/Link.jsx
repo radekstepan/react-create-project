@@ -1,5 +1,4 @@
 import React from 'react';
-import { navigate } from 'react-mini-router';
 
 import App from '../App.jsx';
 

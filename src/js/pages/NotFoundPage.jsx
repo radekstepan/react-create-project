@@ -6,7 +6,7 @@ export default React.createClass({
 
   displayName: 'NotFoundPage.jsx',
 
-  'mixins': [ Page ],
+  mixins: [ Page ],
 
   render() {
     return <div>Page {this.props.path} not found</div>;

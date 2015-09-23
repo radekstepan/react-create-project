@@ -9,6 +9,7 @@ import NotFoundPage from './pages/NotFoundPage.jsx';
 // Will fire even if event is prevented from propagating.
 delete RouterMixin.handleClick;
 
+// Values are function names below.
 let routes = {
   '/': 'blog',
   '/article/:id': 'article'
@@ -25,7 +26,7 @@ export default React.createClass({
   routes: routes,
 
   statics: {
-    // Build a link to a route.
+    // Build a link to a page.
     link(to, params, query) {
       let $url;
       let re = /:[^\/]+/g;
@@ -77,6 +78,7 @@ export default React.createClass({
     return <NotFoundPage path={path} />;
   },
 
+  // Use blank <div /> to always re-mount a Page.
   render() {
     if (blank) {
       process.nextTick(() => this.setState({ tick: true }));

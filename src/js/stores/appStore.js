@@ -26,7 +26,8 @@ class AppStore extends Store {
       ]
     });
 
-    // Listen to all app actions.
+    // Listen to all app actions
+    // articles.comment -> onArticlesComment
     actions.onAny((obj, event) => {
       let fn = ('on.' + event).replace(/[.]+(\w|$)/g, (m, p) => {
         return p.toUpperCase();

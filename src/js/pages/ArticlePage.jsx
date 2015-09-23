@@ -10,7 +10,7 @@ export default React.createClass({
 
   displayName: 'ArticlePage.jsx',
 
-  'mixins': [ Page ],
+  mixins: [ Page ],
 
   render() {
     let store = this.state,
