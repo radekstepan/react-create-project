@@ -2,12 +2,12 @@ import store from '../stores/appStore.js';
 
 export default {
 
-  // Get the pojo of the store.
+  // Get the POJO of the store.
   _getData() {
     return store.get();
   },
 
-  _onChange() {
+  _onChange(val, key) {
     this.setState(this._getData());
   },
 

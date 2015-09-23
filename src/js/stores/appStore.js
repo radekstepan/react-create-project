@@ -39,24 +39,21 @@ class AppStore extends Store {
   
   // Add article comment action listener.
   onArticlesComment(obj) {
-    let index;
+    let key;
     // Find the article.
-    let article = _.find(this.data.articles, (a, i) => {
+    let article = _.find(this.get('articles'), (a, i) => {
       if (a.id == obj.id) {
-        index = i;
+        key = [ 'articles', i, 'comments' ];
         return true;
       }
     });
 
     // Init new or add to array.
     if ('comments' in article) {
-      article.comments.push(obj.value);
+      this.set(key.concat([ article.comments.length ]), obj.value);
     } else {
-      article.comments = [ obj.value ];
+      this.set(key.concat([ 0 ]), obj.value);
     }
-
-    // Save the new comment, will emit event.
-    this.set([ 'articles', index ], article);
   }
 
 }
