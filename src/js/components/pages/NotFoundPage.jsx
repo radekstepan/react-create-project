@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Page from '../mixins/Page.js';
+import Page from '../../lib/PageMixin.js';
 
 export default React.createClass({
 

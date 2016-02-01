@@ -3,31 +3,45 @@ WATCH      = ./node_modules/.bin/watch
 LESS       = ./node_modules/.bin/lessc
 BROWSERIFY = ./node_modules/.bin/browserify
 UGLIFY     = ./node_modules/.bin/uglifyjs
+CLEANCSS   = ./node_modules/.bin/cleancss
 MOCHA      = ./node_modules/.bin/mocha
+
+BIN        = ./bin/run.js
+
 NAME       = $(shell node -e "console.log(require('./package.json').name)")
 
-watch-js:
-	${MAKE} build-js
+MOCHA-OPTS = --compilers js:babel-register --ui exports --timeout 5000 --bail
+
+start:
+	${BIN}
+
+start-dev:
+	${BIN} --dev
+
+watch-js: build-js
 	${WATCHIFY} -e -s $(NAME) ./src/js/index.jsx -t babelify -o public/js/bundle.js -d -v
 
-watch-css:
-	${MAKE} build-css
+watch-css: build-css
 	${WATCH} "${MAKE} build-css" src/less
 
 watch:
 	${MAKE} watch-js & ${MAKE} watch-css
 
 build-js:
-	${BROWSERIFY} -e -s $(NAME) ./src/js/index.jsx -t babelify | ${UGLIFY} - > public/js/bundle.js
+	${BROWSERIFY} -e -s $(NAME) ./src/js/index.jsx -t babelify > public/js/bundle.js
 
 build-css:
-	${LESS} src/less/app.less > public/css/bundle.css
+	${LESS} src/less/$(NAME).less > public/css/bundle.css
 
-build:
-	${MAKE} build-js
-	${MAKE} build-css
+build: build-js build-css
+
+minify-js:
+	${UGLIFY} public/js/bundle.js > public/js/bundle.min.js
+
+minify-css:
+	${CLEANCSS} public/css/bundle.css > public/css/bundle.min.css
 
 test:
-	${MOCHA} --compilers js:babel/register --ui exports --timeout 5000 --bail --reporter spec
+	${MOCHA} ${MOCHA-OPTS} --reporter spec
 
 .PHONY: test

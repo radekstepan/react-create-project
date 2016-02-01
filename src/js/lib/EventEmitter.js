@@ -1,5 +1,6 @@
 import _ from 'lodash';
 
+// TODO: add `onOnce` fn.
 export default class EventEmitter {
 
   constructor() {
@@ -10,7 +11,7 @@ export default class EventEmitter {
   emit(event, obj, ctx) {
     if (!event.length) return;
 
-    this.list.forEach(sub => {
+    this.list.forEach((sub) => {
       if (sub.pattern.test(event)) {
         sub.cb.call(ctx, obj, event);
       }
@@ -30,12 +31,12 @@ export default class EventEmitter {
 
   // Assume we can have multiple.
   off(path, cb) {
-    _.remove(this.list, sub => sub.pattern.test(path) && sub.cb === cb);
+    _.remove(this.list, (sub) => sub.pattern.test(path) && sub.cb === cb);
   }
 
   // Remove all listeners with this callback.
   offAny(cb) {
-    _.remove(this.list, sub => sub.cb === cb);
+    _.remove(this.list, (sub) => sub.cb === cb);
   }
 
 }
