@@ -1,12 +1,17 @@
 {
-  "name": "{{name}}",
+  "name": "name",
   "version": "0.1.0",
   "scripts": {
-    "start": "./node_modules/.bin/superstatic public --port 8080",
+    "start": "make start",
     "test": "make test"
   },
   "dependencies": {
     "deep-diff": "^0.3.2",
+    "express": "^4.13.3",
+    "falcor": "^0.1.13",
+    "falcor-express": "^0.1.2",
+    "falcor-http-datasource": "^0.1.2",
+    "falcor-router": "^0.2.9",
     "lesshat": "^3.0.2",
     "lodash": "^3.10.1",
     "normalize.less": "^1.0.0",
