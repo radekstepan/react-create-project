@@ -6,7 +6,7 @@
   "private": true,
   "license": "AGPL-3.0",
   "bin": {
-    "{{name}}": "./bin/{{name}}.js"
+    "{{name}}": "./bin/run.js"
   },
   "scripts": {
     "start": "make start",
