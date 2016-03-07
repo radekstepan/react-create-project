@@ -9,7 +9,7 @@ export default React.createClass({
   mixins: [ Page ],
 
   render() {
-    return false;
+    return <div>Hello world!</div>;
   }
 
 });
