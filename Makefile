@@ -8,7 +8,7 @@ MOCHA      = ./node_modules/.bin/mocha
 
 BIN        = ./bin/run.js
 
-NAME       = $(shell node -e "console.log(require('./package.json').name)")
+NAME       = {{name}}
 
 MOCHA-OPTS = --compilers js:babel-register --ui exports --timeout 5000 --bail
 
@@ -31,7 +31,7 @@ build-js:
 	${BROWSERIFY} -e -s $(NAME) ./src/js/index.jsx -t babelify > public/js/bundle.js
 
 build-css:
-	${LESS} src/less/$(NAME).less > public/css/bundle.css
+	${LESS} src/less/app.less > public/css/bundle.css
 
 build: build-js build-css
 
