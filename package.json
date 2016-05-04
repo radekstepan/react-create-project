@@ -1,10 +1,10 @@
 {
   "name": "{{name}}",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "{{name}} app on React/Flux",
   "author": "Radek Stepan <dev@radekstepan.com> (http://radekstepan.com)",
   "private": true,
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "bin": {
     "{{name}}": "./bin/run.js"
   },
