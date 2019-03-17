@@ -2,7 +2,14 @@
 
 An app skeleton in React.
 
-## Quickstart
+## Using this skeleton
+
+```bash
+$ npm i -g create-project
+$ create-project [NAME] radekstepan/react-create-project
+```
+
+## App quickstart
 
 ```bash
 $ nvm use # optional
