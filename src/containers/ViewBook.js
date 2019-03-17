@@ -1,19 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class ViewBook extends Component {
-  constructor() {
-    super();
-
-    this.onRemoveBook = this.onRemoveBook.bind(this);
-  }
-
   componentDidMount() {
     // Find the book.
     this.props.resolveBook(this.props.idx);
   }
 
-  onRemoveBook() {
+  onRemoveBook = () => {
     this.props.goBack(); // otherwise we get a "flash" from this ui
     this.props.removeBook(this.props.idx);
   }

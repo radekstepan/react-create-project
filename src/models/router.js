@@ -1,9 +1,9 @@
-import toRegex from "path-to-regexp";
+import toRegex from 'path-to-regexp';
 
-import routes from "../routes";
-import history from "../history";
+import routes from '../routes';
+import history from '../history';
 
-const ROOT_TITLE = "React App";
+const ROOT_TITLE = 'React App';
 
 const matchURI = (path, uri) => {
   const keys = [];
@@ -25,7 +25,7 @@ const resolve = location => {
     if (!params) continue;
     return [i, params, route.title, getQueryParams(location.search)];
   }
-  throw new Error("Not found");
+  throw new Error('Not found');
 };
 
 const getQueryParams = search => {
@@ -38,7 +38,7 @@ const getQueryParams = search => {
 }
 
 const router = {
-  state: { route: '' },
+  state: {route: ''},
   reducers: {
     route(state, location) {
       const [route, params, title, search] = resolve(location);

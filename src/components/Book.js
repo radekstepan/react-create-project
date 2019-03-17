@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Book = props => (
   <div className="book" onClick={props.viewDetail}>

@@ -1,5 +1,5 @@
-import books from "./books";
-import router from "./router";
+import books from './books';
+import router from './router';
 
 export default {
   books,

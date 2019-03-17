@@ -1,26 +1,18 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import Field from "../components/Field";
+import Field from '../components/Field';
 
 class AddBook extends Component {
-  constructor() {
-    super();
+  state = {title: '', author: '', description: ''};
 
-    this.state = { title: '', author: '', description: '' };
+  onChange = key =>
+    e => this.setState({[key]: e.target.value});
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onChange(key) {
-    return e => this.setState({ [key]: e.target.value });
-  }
-
-  onSubmit(e) {
-    this.props.addBook(this.state).then(() => this.props.navigate('/'));
-
+  onSubmit = async e => {
     e.preventDefault();
+    await this.props.addBook(this.state)
+    this.props.navigate('/');
   }
 
   render() {

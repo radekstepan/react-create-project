@@ -1,6 +1,6 @@
 # {{name}}
 
-A bookstore starter app in React.
+An app skeleton in React.
 
 ## Quickstart
 

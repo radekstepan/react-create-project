@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { init } from "@rematch/core";
-import { Provider } from "react-redux";
+import {init} from "@rematch/core";
+import {Provider} from "react-redux";
 
 import history from "./history";
 import models from "./models/";
@@ -9,7 +9,7 @@ import App from "./App";
 
 import "./styles/main.css";
 
-import { map, last } from './data/books';
+import {map, last} from './data/books';
 
 // Example data.
 models.books.state = {...models.books.state, map, last};
