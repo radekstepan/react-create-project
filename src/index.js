@@ -1,13 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import {init} from "@rematch/core";
-import {Provider} from "react-redux";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {init} from '@rematch/core';
+import {Provider} from 'react-redux';
 
-import history from "./history";
-import models from "./models/";
-import App from "./App";
+import history from './history';
+import models from './models/';
+import App from './App';
 
-import "./styles/main.css";
+import './styles/main.scss';
 
 import {map, last} from './data/books';
 
@@ -21,6 +21,7 @@ const store = init({
 // Initial route.
 store.dispatch.router.route(history.location);
 
+// Render app.
 ReactDOM.render(
   <Provider store={store}>
     <App />

@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import ListBooks from "./containers/ListBooks";
-import AddBook from "./containers/AddBook";
-import ViewBook from "./containers/ViewBook";
+import ListBooks from './containers/ListBooks';
+import AddBook from './containers/AddBook';
+import ViewBook from './containers/ViewBook';
 
 const routes = [
   { path: "/", render: () => <ListBooks /> },

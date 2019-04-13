@@ -1,5 +1,5 @@
-@import "../../node_modules/normalize.css/normalize.css";
-@import "https://fonts.googleapis.com/css?family=Fira+Sans:400,500";
+@import url('../../node_modules/normalize.css/normalize.css');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500');
 
 html,
 body {
@@ -13,4 +13,4 @@ input {
   letter-spacing: 0.25px;
 }
 
-@import "./app.scss";
+@import './app.scss';

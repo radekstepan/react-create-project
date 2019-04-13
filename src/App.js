@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import history from "./history";
-import routes from "./routes";
+import history from './history';
+import routes from './routes';
 
-import Topbar from "./components/Topbar";
+import Topbar from './components/Topbar';
 
 class App extends Component {
   componentDidMount() {
