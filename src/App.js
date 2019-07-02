@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import history from './history';
@@ -6,20 +6,20 @@ import routes from './routes';
 
 import Topbar from './components/Topbar';
 
-class App extends Component {
-  componentDidMount() {
-    // Watch route changes (allows back-button etc.).
-    history.listen(location => this.props.route(location));
-  }
+function App(props) {
+  const {route} = props;
 
-  render() {
-    return (
-      <div>
-        <Topbar />
-        {this.props.render(this.props.state)}
-      </div>
-    );
-  }
+  useEffect(() => {
+    // Watch route changes (allows back-button etc.).
+    history.listen(location => route(location));
+  }, [route]);
+
+  return (
+    <div>
+      <Topbar />
+      {props.render(props.state)}
+    </div>
+  );
 }
 
 const mapState = state => ({

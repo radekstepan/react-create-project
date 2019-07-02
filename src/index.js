@@ -12,7 +12,11 @@ import './styles/main.scss';
 import {map, last} from './data/books';
 
 // Example data.
-models.books.state = {...models.books.state, map, last};
+models.books.state = {
+  ...models.books.state,
+  map,
+  last
+};
 
 const store = init({
   models,

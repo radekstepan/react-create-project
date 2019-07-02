@@ -2,7 +2,11 @@ import books from './books';
 
 describe('models/books', () => {
   test('adds a book', () => {
-    const book = {title: 'Design Patterns', author: 'Gang of Four' };
+    const book = {
+      title: 'Design Patterns',
+      author: 'Gang of Four'
+    };
+
     const state = books.reducers.addBook(books.state, book);
 
     expect(state).toEqual({

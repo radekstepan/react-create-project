@@ -1,37 +1,39 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 
 import Field from '../components/Field';
 
-class AddBook extends Component {
-  state = {title: '', author: '', description: ''};
+function AddBook(props) {
+  const [state, setState] = useState({
+    title: '',
+    author: '',
+    description: ''
+  });
 
-  onChange = key =>
-    e => this.setState({[key]: e.target.value});
+  const onChange = key => e =>
+    setState({...state, [key]: e.target.value});
 
-  onSubmit = async e => {
+  const onSubmit = async e => {
     e.preventDefault();
-    await this.props.addBook(this.state)
-    this.props.navigate('/');
-  }
+    await props.addBook(state);
+    props.navigate('/');
+  };
 
-  render() {
-    return (
-      <div id="main">
-        <div className="modal">
-          <div className="title">Add a Book</div>
-          <form onSubmit={this.onSubmit}>
-            <Field placeholder="Title" onChange={this.onChange('title')} />
-            <Field placeholder="Author" onChange={this.onChange('author')} />
-            <Field placeholder="Description" onChange={this.onChange('description')} />
-            <div>
-              <input type="submit" className="button" value="Save" />
-            </div>
-          </form>
-        </div>
+  return (
+    <div id="main">
+      <div className="modal">
+        <div className="title">Add a Book</div>
+        <form onSubmit={onSubmit}>
+          <Field placeholder="Title" onChange={onChange('title')} />
+          <Field placeholder="Author" onChange={onChange('author')} />
+          <Field placeholder="Description" onChange={onChange('description')} />
+          <div>
+            <input type="submit" className="button" value="Save" />
+          </div>
+        </form>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 const mapDispatch = dispatch => ({

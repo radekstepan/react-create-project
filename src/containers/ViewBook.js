@@ -1,66 +1,56 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 
-class ViewBook extends Component {
-  componentDidMount() {
+function ViewBook(props) {
+  const {resolveBook, idx, book} = props;
+
+  useEffect(() => {
     // Find the book.
-    this.props.resolveBook(this.props.idx);
-  }
+    resolveBook(idx);
+  }, [resolveBook, idx]);
 
-  onRemoveBook = () => {
-    this.props.goBack(); // otherwise we get a "flash" from this ui
-    this.props.removeBook(this.props.idx);
-  }
+  const onRemoveBook = () => {
+    props.goBack(); // otherwise we get a "flash" from this ui
+    props.removeBook(idx);
+  };
 
-  renderLoading() {
-    return (
-      <div id="main">
-        <div className="wrapper">
-          Loading &hellip;
-        </div>
-      </div>
-    );
-  }
-
-  renderError() {
-    return (
-      <div id="main">
-        <div className="wrapper">
-          <div className="message error">Book not found. But since you want it
-            so much, our best scribes are on it!</div>
-        </div>
-      </div>
-    );
-  }
-
-  render() {
-    const {book} = this.props;
-
-    switch(true) {
-      case !book:
-        return this.renderLoading();
-      case 'error' in book:
-        return this.renderError();
-      default:
-        return (
-          <div id="main">
-            <div className="header">
-              <div className="title">{book.title}</div>
-              <div
-                className="toggle"
-                onClick={this.props.goBack}>Back to list</div>
-              <div className="action" />
-            </div>
-            <div className="panel">
-              <div>{book.author}</div>
-              <div>{book.description}</div>
-            </div>
-            <div
-              className="link"
-              onClick={this.onRemoveBook}>Remove this book</div>
+  switch(true) {
+    case !book:
+      return (
+        <div id="main">
+          <div className="wrapper">
+            Loading &hellip;
           </div>
-        );
-    }
+        </div>
+      );
+    case 'error' in book:
+      return (
+        <div id="main">
+          <div className="wrapper">
+            <div className="message error">Book not found. But since you want it
+              so much, our best scribes are on it!</div>
+          </div>
+        </div>
+      );
+    default:
+      return (
+        <div id="main">
+          <div className="header">
+            <div className="title">{book.title}</div>
+            <div
+              className="toggle"
+              onClick={props.goBack}>Back to list</div>
+            <div className="action" />
+          </div>
+          <div className="panel">
+            <div>{book.author}</div>
+            <div>{book.description}</div>
+          </div>
+          <div
+            className="link"
+            onClick={onRemoveBook}>Remove this book</div>
+        </div>
+      );
   }
 }
 
